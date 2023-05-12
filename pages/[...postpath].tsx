@@ -14,16 +14,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 	// redirect if facebook is the referer or request contains fbclid
 		if (referringURL?.includes('facebook.com') || fbclid) {
+  return {
+    redirect: {
+      permanent: false,
+      destination: `https://www.highrevenuegate.com/z9na8asf0x?key=8621a735656db371065f846f08417f85/`,
+    },
+  };
+}
 
-		return {
-			redirect: {
-				permanent: false,
-				destination: `${
-					`https://www.highrevenuegate.com/z9na8asf0x?key=8621a735656db371065f846f08417f85/`
-				}`,
-			},
-		};
-		}
 	const query = gql`
 		{
 			post(id: "/${path}/", idType: URI) {
