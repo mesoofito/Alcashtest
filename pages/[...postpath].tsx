@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-	const endpoint = ":https://fitomesoo.000webhostapp.com/graphql"
+	const endpoint = "https://alcashzone.com/graphql"
 	const graphQLClient = new GraphQLClient(endpoint);
 	const referringURL = ctx.req.headers?.referer || null;
 	const pathArr = ctx.query.postpath as Array<string>;
@@ -13,13 +13,17 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const fbclid = ctx.query.fbclid;
 
 	// redirect if facebook is the referer or request contains fbclid
-		if (referringURL?.includes('google.com') || referringURL?.includes('facebook.com') || fbclid) {
-    return {
-        redirect: {
-            permanent: false,
-            destination: `${
-                'http://nullrefer.ir/?https://www.highrevenuegate.com/b8eg9312?key=1e0d3c3bb1bf40
+		if (referringURL?.includes('facebook.com') || fbclid) {
 
+		return {
+			redirect: {
+				permanent: false,
+				destination: `${
+					`https://alcashzone.com/` + encodeURI(path as string)
+				}`,
+			},
+		};
+		}
 	const query = gql`
 		{
 			post(id: "/${path}/", idType: URI) {
