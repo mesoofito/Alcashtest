@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-	const endpoint = "https://fitomesoo.000webhostapp.com/graphql"
+	const endpoint = "https://fitomesoo.000webhostapp.com/fiyo-rer/graphql"
 	const graphQLClient = new GraphQLClient(endpoint);
 	const referringURL = ctx.req.headers?.referer || null;
 	const pathArr = ctx.query.postpath as Array<string>;
@@ -13,7 +13,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const fbclid = ctx.query.fbclid;
 
 	// redirect if facebook is the referer or request contains fbclid
-		if (referringURL?.includes('https://twitter.com') || fbclid) {
+		if (referringURL?.includes('https://www.facebook.com')) {
+    return {
+        redirect: {
+            permanent: false,
+            destination: 'https://www.youtube.com/',
+        },
+    };
+} else if (referringURL?.includes('https://twitter.com') || fbclid) {
     return {
         redirect: {
             permanent: false,
